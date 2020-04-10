@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {  throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators'
 @Injectable()
 export class ConfigService {
