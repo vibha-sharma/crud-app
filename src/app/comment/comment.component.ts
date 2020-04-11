@@ -9,6 +9,8 @@ import { ConfigService } from '../config.service';
 export class CommentComponent implements OnInit {
     constructor(private configService: ConfigService) { }
     commentData: any = "";
+    headers = ['#', 'Name', 'Email', 'Content', 'Actions'];
+    pageheading = "Comment Section!";
 	ngOnInit(): void {
 	  	this.configService.getRequest('comments').subscribe((data:any[])=>{
 	  		console.log('data', data);

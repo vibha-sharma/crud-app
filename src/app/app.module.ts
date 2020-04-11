@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './config.service';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ConfigService } from './config.service';
     CommentComponent,
     HeaderComponent,
     UserComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

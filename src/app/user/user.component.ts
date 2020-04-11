@@ -9,9 +9,10 @@ import { ConfigService } from '../config.service';
 export class UserComponent implements OnInit {
     constructor(private configService: ConfigService) { }
     profileData: any = "";
+    headers = ['Id', 'Name/Username', 'Email', 'Phone','Actions'];
+    pageheading = "User Section!";
 	ngOnInit(): void {
 	  	this.configService.getRequest('profiles').subscribe((data:any[])=>{
-	  		console.log('data', data);
 	  		this.profileData = data;
 	  	});
 	}

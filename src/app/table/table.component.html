@@ -1,0 +1,19 @@
+<p>{{pageHeader}}</p>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let header of header">{{header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of data">
+        <td> {{ data.id }}</td>
+        <td *ngIf="data.name"> {{ data.name }} / {{ data.username }}</td>
+        <td *ngIf="data.email"> {{ data.email }}</td>
+        <td *ngIf="data.phone"> {{ data.phone }}</td>
+        <td *ngIf="data.title"> {{ data.title }}</td>
+        <td *ngIf="data.body"> {{ data.body }}</td>
+        <td>Show details</td>
+      </tr>
+    </tbody>
+  </table>
