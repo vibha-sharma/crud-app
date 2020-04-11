@@ -12,8 +12,23 @@ export class UserComponent implements OnInit {
     headers = ['Id', 'Name/Username', 'Email', 'Phone','Actions'];
     pageheading = "User Section!";
 	ngOnInit(): void {
-	  	this.configService.getRequest('profiles').subscribe((data:any[])=>{
-	  		this.profileData = data;
+		this.getData();
+		this.refreshData();
+	}
+	// Delete Row 
+	deleteRow (getid) {
+		this.configService.deleteRequest('profiles/', getid).subscribe((data:any[])=>{
 	  	});
+	}
+	// Get user data
+	getData(){
+		this.configService.getRequest('profiles').subscribe((data:any[])=>{
+		  	this.profileData = data;
+		});	
+	};
+	refreshData(){
+	    setInterval(() => {
+	      this.getData();
+	    }, 3000); 
 	}
 }

@@ -39,7 +39,7 @@ import { TableComponent } from './table/table.component';
     NoopAnimationsModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
   ConfigService

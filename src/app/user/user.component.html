@@ -1,3 +1,2 @@
-<div class="container" style="margin-top: 70px;">
-  <app-table [data]="profileData" [header]="headers" [pageHeader]="pageheading"></app-table>
-</div>
+<app-table [data]="profileData" [header]="headers" [pageHeader]="pageheading"
+  (deleteEvent)=deleteRow($event)></app-table>

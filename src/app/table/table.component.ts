@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -8,11 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TableComponent implements OnInit {
   @Input() data:any;
   @Input() header:[];
-  @Input() pageHeader:"";
+  @Input() pageHeader:string ="";
+  @Output() deleteEvent = new EventEmitter<any>();
   constructor() { }
 
-  ngOnInit(): void {
-  	console.log('this', this.data);
+  ngOnInit(): void {}
+  deleteRow (getId) {
+    this.deleteEvent.emit(getId);
   }
-
 }

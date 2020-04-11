@@ -1,4 +1,6 @@
-<p>{{pageHeader}}</p>
+<p class="bg-info navbar">
+{{pageHeader}}
+</p>
 <table class="table table-hover">
     <thead>
       <tr>
@@ -6,14 +8,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of data">
+      <tr *ngFor="let data of data;">
         <td> {{ data.id }}</td>
         <td *ngIf="data.name"> {{ data.name }} / {{ data.username }}</td>
         <td *ngIf="data.email"> {{ data.email }}</td>
         <td *ngIf="data.phone"> {{ data.phone }}</td>
         <td *ngIf="data.title"> {{ data.title }}</td>
         <td *ngIf="data.body"> {{ data.body }}</td>
-        <td>Show details</td>
+        <td>
+        	<span *ngIf="pageHeader === 'User Section!'"><i class="fa fa-edit"></i></span>
+        	<span *ngIf="pageHeader != 'User Section!'"><i class="fa fa-pencil-square"></i></span>
+        	<span (click)="deleteRow(data.id)"><i class="fa fa-trash"></i></span>
+        </td>
       </tr>
     </tbody>
   </table>

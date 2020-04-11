@@ -19,4 +19,7 @@ export class ConfigService {
   public getRequest(api:any) {
   	return this.http.get(BASE_URL +api).pipe(retry(3), catchError(this.handleError));
   }
+  public deleteRequest(api:any, id:any){
+    return this.http.delete(BASE_URL + api + id);
+  }
 }
