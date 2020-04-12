@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary bg-info" (click)="deleteUser(getId)" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-primary bg-info" (click)="deleteRowData(getId)" data-dismiss="modal">Yes</button>
       </div>
     </div>
   </div>
@@ -45,10 +45,10 @@
 			    </div>
 			    <div class="form-group">
 			        <label for="address">Address:</label>
-			        <input *ngIf="getdata.address.street" type="text" class="form-control" id="email" placeholder="Enter Street" name="address" [ngModel]="getdata.address.street"  #address="ngModel">
-			        <input *ngIf="getdata.address.suite" type="text" class="form-control" id="suite" placeholder="Enter Suite" name="suite" [ngModel]="getdata.address.suite" #suite="ngModel">
-			        <input *ngIf="getdata.address.city" type="text" class="form-control" id="city" placeholder="Enter City" name="city" [ngModel]="getdata.address.city" #city="ngModel">
-			        <input *ngIf="getdata.address.zipcode" type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode" name="zipcode" [ngModel]="getdata.address.zipcode" #zipcode="ngModel">
+			        <input *ngIf="getdata.address && getdata.address.street" type="text" class="form-control" id="email" placeholder="Enter Street" name="address" [ngModel]="getdata.address.street"  #address="ngModel">
+			        <input *ngIf="getdata.address && getdata.address.suite" type="text" class="form-control" id="suite" placeholder="Enter Suite" name="suite" [ngModel]="getdata.address.suite" #suite="ngModel">
+			        <input *ngIf="getdata.address && getdata.address.city" type="text" class="form-control" id="city" placeholder="Enter City" name="city" [ngModel]="getdata.address.city" #city="ngModel">
+			        <input *ngIf="getdata.address && getdata.address.zipcode" type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode" name="zipcode" [ngModel]="getdata.address.zipcode" #zipcode="ngModel">
 			    </div>
 		    <button type="submit" class="btn btn-primary bg-info">Submit Form</button>
 		</form>

@@ -19,7 +19,7 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  deleteUser(getId){
+  deleteRowData(getId){
     this.deleteEventFromModel.emit(getId);
   }
   onSubmit(updateForm) {
