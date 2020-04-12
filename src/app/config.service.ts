@@ -22,4 +22,7 @@ export class ConfigService {
   public deleteRequest(api:any, id:any){
     return this.http.delete(BASE_URL + api + id);
   }
+  public putRequest(api:any, data:any){
+    //return this.http.put(BASE_URL + api + data);
+  }
 }

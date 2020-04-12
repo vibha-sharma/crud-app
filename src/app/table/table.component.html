@@ -16,10 +16,29 @@
         <td *ngIf="data.title"> {{ data.title }}</td>
         <td *ngIf="data.body"> {{ data.body }}</td>
         <td>
-        	<span *ngIf="pageHeader === 'User Section!'"><i class="fa fa-edit"></i></span>
-        	<span *ngIf="pageHeader != 'User Section!'"><i class="fa fa-pencil-square"></i></span>
-        	<span (click)="deleteRow(data.id)"><i class="fa fa-trash"></i></span>
+        	<span *ngIf="pageHeader === 'User Section!'" data-toggle="modal" [attr.data-target]="'#updateModal' + data.id" type="button"><i class="fa fa-edit"></i></span>
+        	<span *ngIf="pageHeader != 'User Section!'" data-toggle="modal" [attr.data-target]="'#updateModal' + data.id" type="button"><i class="fa fa-pencil-square"></i></span>
+        	<span data-toggle="modal" [attr.data-target]="'#deleteModal' + data.id" type="button"><i class="fa fa-trash"></i></span>
         </td>
+        <app-modal [getdata]="data" [getId]="data.id" [id]="'deleteModal' + data.id" [updateDetail]="'updateModal' + data.id"
+        (deleteEventFromModel)=deleteRow($event) (updateEventFromModal)=updateRow($event)>
+        </app-modal>
+        <!-- <div class="modal fade" [attr.id]="'deleteModal' + data.id" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Are you sure you want to delete?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-primary bg-info" (click)="deleteRow(data.id)" data-dismiss="modal">Yes</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
       </tr>
     </tbody>
   </table>

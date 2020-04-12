@@ -13,11 +13,11 @@ export class UserComponent implements OnInit {
     pageheading = "User Section!";
 	ngOnInit(): void {
 		this.getData();
-		this.refreshData();
 	}
 	// Delete Row 
-	deleteRow (getid) {
+	deleteUserRow (getid) {
 		this.configService.deleteRequest('profiles/', getid).subscribe((data:any[])=>{
+			this.getData();
 	  	});
 	}
 	// Get user data
@@ -26,9 +26,10 @@ export class UserComponent implements OnInit {
 		  	this.profileData = data;
 		});	
 	};
-	refreshData(){
-	    setInterval(() => {
-	      this.getData();
-	    }, 3000); 
+	updateData (getData){
+		console.log('getData', getData);
+		// this.configService.putRequest('profiles/' + getData.id + '/', getData).subscribe((data:any[])=>{
+	 //   	    this.getData();
+		// });
 	}
 }

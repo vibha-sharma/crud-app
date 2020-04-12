@@ -16,6 +16,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { TableComponent } from './table/table.component';
+import { FormsModule } from '@angular/forms';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { TableComponent } from './table/table.component';
     HeaderComponent,
     UserComponent,
     PageNotFoundComponent,
-    TableComponent
+    TableComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { TableComponent } from './table/table.component';
     NoopAnimationsModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
   ConfigService

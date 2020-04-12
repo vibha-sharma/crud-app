@@ -12,8 +12,16 @@ export class PostComponent implements OnInit {
     headers = ['#', 'Title', 'Content', 'Actions']
     pageheading = "Post Section!";
 	ngOnInit(): void {
-	  	this.configService.getRequest('posts').subscribe((data:any[])=>{
-	  		console.log('data', data);
+		this.getData();
+	}
+    // Delete Row 
+	deleteRow (getid) {
+		this.configService.deleteRequest('posts/', getid).subscribe((data:any[])=>{
+			this.getData();
+	  	});
+	}
+	getData(){
+		this.configService.getRequest('posts').subscribe((data:any[])=>{
 	  		this.postData = data;
 	  	});
 	}

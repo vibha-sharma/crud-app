@@ -12,10 +12,17 @@ export class CommentComponent implements OnInit {
     headers = ['#', 'Name', 'Email', 'Content', 'Actions'];
     pageheading = "Comment Section!";
 	ngOnInit(): void {
-	  	this.configService.getRequest('comments').subscribe((data:any[])=>{
-	  		console.log('data', data);
+		this.getData();
+	}
+	// Delete Row 
+	deleteRow (getid) {
+		this.configService.deleteRequest('comments/', getid).subscribe((data:any[])=>{
+			this.getData();
+	  	});
+	}
+	getData(){
+		this.configService.getRequest('comments').subscribe((data:any[])=>{
 	  		this.commentData = data;
 	  	});
 	}
-
 }

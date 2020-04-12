@@ -1,5 +1,6 @@
 td span {
 	margin: 5px;
+	cursor: pointer;
 }
 .bg-info {
 	color: #fff;
