@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ConfigService } from '../config.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+	@Input() getUserInfo:any;
     constructor(private configService: ConfigService) { }
     profileData: any = "";
     headers = ['Id', 'Name/Username', 'Email', 'Phone','Actions'];

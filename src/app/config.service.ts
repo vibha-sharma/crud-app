@@ -25,4 +25,7 @@ export class ConfigService {
   public putRequest(api:any, data:any){
     //return this.http.put(BASE_URL + api + data);
   }
+  public postRequest(api:any, data:any){
+    return this.http.post(BASE_URL + api, data);
+  }
 }

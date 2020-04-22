@@ -26,32 +26,102 @@
         </button>
       </div>
        <div class="modal-body">
-       	 <form #updateForm="ngForm" (ngSubmit)="onSubmit(getdata)" novalidate>
+       	     <form #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm)" novalidate>
        	 	    <div class="form-group">
 			        <label for="name">Name:</label>
-			        <input type="name" class="form-control" id="name" placeholder="Enter Name" name="name" [ngModel]="getdata.name" #name="ngModel">
+			        <input  *ngIf="getdata.name" type="text" class="form-control" id="name" placeholder="Enter Name" name="getdata.name" [ngModel]="getdata.name" #name="ngModel"/>
 			    </div>
 			    <div class="form-group">
 			        <label for="username">User Name:</label>
-			        <input type="username" class="form-control" id="username" placeholder="Enter Username" name="username" [ngModel]="getdata.username" #username="ngModel">
+			        <input *ngIf="getdata.username" type="text" class="form-control" id="username" placeholder="Enter Username" name="getdata.usernam" [ngModel]="getdata.username" #username="ngModel"/>
 			    </div>
 			    <div class="form-group">
 			        <label for="email">Email:</label>
-			        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" [ngModel]="getdata.email" #email="ngModel">
+			        <input *ngIf="getdata.email" type="email" class="form-control" id="email" placeholder="Enter Email" name="getdata.email" [ngModel]="getdata.email" #email="ngModel"/>
 			    </div>
 			    <div class="form-group">
 			        <label for="phone">Phone:</label>
-			        <input type="phone" class="form-control" id="phone" placeholder="Enter Phone" name="phone" [ngModel]="getdata.phone" #phone="ngModel">
+			        <input *ngIf="getdata.phone" type="phone" class="form-control" id="phone" placeholder="Enter Phone" name="getdata.phone" [ngModel]="getdata.phone" #phone="ngModel"/>
 			    </div>
 			    <div class="form-group">
 			        <label for="address">Address:</label>
-			        <input *ngIf="getdata.address && getdata.address.street" type="text" class="form-control" id="email" placeholder="Enter Street" name="address" [ngModel]="getdata.address.street"  #address="ngModel">
-			        <input *ngIf="getdata.address && getdata.address.suite" type="text" class="form-control" id="suite" placeholder="Enter Suite" name="suite" [ngModel]="getdata.address.suite" #suite="ngModel">
-			        <input *ngIf="getdata.address && getdata.address.city" type="text" class="form-control" id="city" placeholder="Enter City" name="city" [ngModel]="getdata.address.city" #city="ngModel">
-			        <input *ngIf="getdata.address && getdata.address.zipcode" type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode" name="zipcode" [ngModel]="getdata.address.zipcode" #zipcode="ngModel">
+			        <input *ngIf="getdata.address && getdata.address.street" type="text" class="form-control" id="email" placeholder="Enter Street" name="getdata.address.street" [ngModel]="getdata.address.street"  #address="ngModel"/>
+			        <input *ngIf="getdata.address && getdata.address.suite" type="text" class="form-control" id="suite" placeholder="Enter Suite" name="getdata.address.suite" [ngModel]="getdata.address.suite" #suite="ngModel"/>
+			        <input *ngIf="getdata.address && getdata.address.city" type="text" class="form-control" id="city" placeholder="Enter City" name="getdata.address.city" [ngModel]="getdata.address.city" #city="ngModel"/>
+			        <input *ngIf="getdata.address && getdata.address.zipcode" type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode" name="getdata.address.zipcode" [ngModel]="getdata.address.zipcode" #zipcode="ngModel"/>
 			    </div>
-		    <button type="submit" class="btn btn-primary bg-info">Submit Form</button>
-		</form>
+		        <button type="submit" class="btn btn-primary bg-info">Submit Form</button>
+		    </form>
+       </div>
+    </div>
+  </div>
+</div>
+<!-- Craete Account -->
+<div class="modal fade" id="createAccountModal" tabindex="-1" role="dialog" aria-labelledby="createAccountModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create an Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+       <div class="modal-body">
+       	    <form class="form" [formGroup]="createAccountForm" (ngSubmit)="onSubmitCreateForm()">
+       	 	    <div class="form-group">
+			        <label for="name">Name:</label>
+			        <input name="name" id="name" type="text" class="form-control" placeholder="Name" formControlName="name" [ngClass]="{'alert-danger-input' : (validation.name.touched || submitted) && validation.name.errors?.required}"/>
+			        <div *ngIf="(validation.name.touched || submitted) && validation.name.errors?.required" class="alert alert-danger">Name is required</div>
+			    </div>
+			    <div class="form-group">
+			        <label for="username">User Name:</label>
+			        <input name="username" id="username" type="text" class="form-control" placeholder="User Name" formControlName="username" [ngClass]="{'alert-danger-input' : (validation.username.touched || submitted) && validation.username.errors?.required}"/>
+		           <div *ngIf="(validation.username.touched || submitted) && validation.username.errors?.required" class="alert alert-danger">
+		              User Name is required
+		            </div>
+			    </div>
+			    <div class="form-group">
+			        <label for="email">Email:</label>
+			        <input name="email" id="email" type="email" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{'alert-danger-input' : (validation.email.touched || submitted) && (validation.email.errors?.required || validation.email.errors?.email)}"/>
+		           <div *ngIf="(validation.email.touched || submitted)" class="alert alert-danger">
+		                <div *ngIf="validation.email.errors?.required">Email is required</div>
+		                <div *ngIf="validation.email.errors?.email">Please enter valid email address</div>
+		            </div>			        
+			    </div>
+			    <div class="form-group">
+			        <label for="phone">Phone:</label>
+			        <input name="phone" id="phone" type="number" class="form-control" placeholder="Phone" formControlName="phone" [ngClass]="{'alert-danger-input' : (validation.phone.touched || submitted) && (validation.phone.errors?.required || validation.phone.errors?.phone)}"/>
+		           <div *ngIf="(validation.phone.touched || submitted)" class="alert alert-danger">
+		                <div *ngIf="validation.phone.errors?.required">Phone Number is required.</div>
+		                <div *ngIf="validation.phone.errors?.pattern">Please enter valid phone Number of 10 digit.</div>
+		            </div>
+			    </div>
+			    <div class="form-group">
+			        <label for="address">Address:</label>
+			        <input name="address" id="address" type="text" class="form-control" placeholder="Enter Street" formControlName="address" [ngClass]="{'alert-danger-input' : (validation.address.touched || submitted) && validation.address.errors?.required}"/>
+			        <div *ngIf="(validation.address.touched || submitted) && validation.address.errors?.required" class="alert alert-danger">
+		              Address is required
+		            </div>
+			        <input name="suite" id="suite" type="text" class="form-control" placeholder="Enter Suite" formControlName="suite"/>
+			        <input name="city" id="city" type="text" class="form-control" placeholder="Enter City"  formControlName="city"/>
+			        <input name="zipcode" id="zipcode" type="number" class="form-control" placeholder="Enter Zipcode" formControlName="zipcode"/>			        			        			 
+			    </div>
+			    <div class="form-group">
+			        <label for="url">Website:</label>
+			        <input name="url" id="url" type="text" class="form-control" placeholder="Website"  formControlName="url"/>
+			    </div>
+			    <div class="form-group">
+			        <label for="company">Company:</label>
+			        <input name="company" id="company" type="text" class="form-control" placeholder="Enter Company Name" formControlName="company" [ngClass]="{'alert-danger-input' : (validation.company.touched || submitted) && validation.company.errors?.required}"/>
+			        <div *ngIf="(validation.company.touched || submitted) && validation.company.errors?.required" class="alert alert-danger">
+                        Company Name is required
+		            </div>
+			        <input name="catchPhrase" id="catchPhrase" type="text" class="form-control" placeholder="Enter Company CatchPhrase" formControlName="catchPhrase"/>
+			        <input name="bs" id="bs" type="text" class="form-control" placeholder="Enter Company Bs" formControlName="bs"/>
+			    </div>
+			    <button type="button" class="btn btn-secondary pull-right" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary bg-info pull-right">Create Account</button>
+		    </form>
        </div>
     </div>
   </div>

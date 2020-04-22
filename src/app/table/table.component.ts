@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-table',
@@ -12,8 +13,9 @@ export class TableComponent implements OnInit {
   @Output() updateEvent = new EventEmitter<any>();
   @Output() deleteRowDataEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
+//  @Output() userInfoEvent = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {}
   deleteRowData(data){

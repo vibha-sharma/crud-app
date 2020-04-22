@@ -1,0 +1,19 @@
+.alert-danger {
+	color: #ca1919;
+    background-color: #fff;
+    border: none;
+    font-weight: 400;
+    padding-left: 3px;
+    padding: 0;
+    margin: 0;
+}
+.alert-danger-input {
+	border: 1px solid #c73232;
+	color: #c73232;
+}
+input {
+	margin-bottom: 10px;
+}
+.btn-primary {
+	margin-right: 10px;
+}

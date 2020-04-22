@@ -1,6 +1,5 @@
-<p class="bg-info navbar">
-{{pageHeader}}
-</p>
+<p class="bg-info navbar">{{pageHeader}}</p>
+<button class="btn btn-outline-secondary" routerLink="/user/getuser">Get user Detail</button>
 <table class="table table-hover">
     <thead>
       <tr>
@@ -19,6 +18,9 @@
         	<span *ngIf="pageHeader === 'User Section!'" data-toggle="modal" [attr.data-target]="'#updateModal' + data.id" type="button"><i class="fa fa-edit"></i></span>
         	<span *ngIf="pageHeader != 'User Section!'" data-toggle="modal" [attr.data-target]="'#updateModal' + data.id" type="button"><i class="fa fa-pencil-square"></i></span>
         	<span data-toggle="modal" [attr.data-target]="'#deleteModal' + data.id" type="button"><i class="fa fa-trash"></i></span>
+          <span [routerLink]="['/user/',data.id]"><i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+          <!-- [routerLink]="['/user/',data.id]" -->
         </td>
         <app-modal [getdata]="data" [getId]="data.id" [id]="'deleteModal' + data.id" [updateDetail]="'updateModal' + data.id"
         (deleteEventFromModel)=deleteRow($event) (updateEventFromModal)=updateRow($event)>

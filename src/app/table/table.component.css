@@ -6,3 +6,7 @@ td span {
 	color: #fff;
 	margin: 0;
 }
+.btn-outline-secondary {
+	margin: 10px 20px;
+    float: right;
+}

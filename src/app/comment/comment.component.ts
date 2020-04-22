@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ConfigService } from '../config.service';
 
 @Component({
@@ -11,14 +11,13 @@ export class CommentComponent implements OnInit {
     commentData: any = "";
     headers = ['#', 'Name', 'Email', 'Content', 'Actions'];
     pageheading = "Comment Section!";
+    @Output() deleteEventFromModel = new EventEmitter<any>();
 	ngOnInit(): void {
 		this.getData();
 	}
 	// Delete Row 
-	deleteRow (getid) {
-		this.configService.deleteRequest('comments/', getid).subscribe((data:any[])=>{
-			this.getData();
-	  	});
+	deleteRowData(getId){
+	    this.deleteEventFromModel.emit(getId);
 	}
 	getData(){
 		this.configService.getRequest('comments').subscribe((data:any[])=>{
