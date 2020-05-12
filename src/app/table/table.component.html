@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of data;">
+      <tr *ngFor="let data of data">
         <td> {{ data.id }}</td>
         <td *ngIf="data.name"> {{ data.name }} / {{ data.username }}</td>
         <td *ngIf="data.email"> {{ data.email }}</td>
@@ -16,9 +16,9 @@
         <td *ngIf="data.body"> {{ data.body }}</td>
         <td>
         	<span *ngIf="pageHeader === 'User Section!'" data-toggle="modal" [attr.data-target]="'#updateModal' + data.id" type="button"><i class="fa fa-edit"></i></span>
-        	<span *ngIf="pageHeader != 'User Section!'" data-toggle="modal" [attr.data-target]="'#updateModal' + data.id" type="button"><i class="fa fa-pencil-square"></i></span>
+        	<span *ngIf="pageHeader != 'User Section!'" data-toggle="modal" type="button"><i class="fa fa-pencil-square"></i></span>
         	<span data-toggle="modal" [attr.data-target]="'#deleteModal' + data.id" type="button"><i class="fa fa-trash"></i></span>
-          <span [routerLink]="['/user/',data.id]"><i class="fa fa-user" aria-hidden="true"></i>
+          <span *ngIf="pageHeader === 'User Section!'" [routerLink]="['/user/',data.id]"><i class="fa fa-user" aria-hidden="true"></i>
           </span>
           <!-- [routerLink]="['/user/',data.id]" -->
         </td>
@@ -28,3 +28,4 @@
       </tr>
     </tbody>
   </table>
+ <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>

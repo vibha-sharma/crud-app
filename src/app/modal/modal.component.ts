@@ -7,7 +7,6 @@ declare var $: any;
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-  @Input() data:any;
   @Input() id:any;
   @Input() getId: any;
   @Input() getdata: any = {};
@@ -46,8 +45,25 @@ export class ModalComponent implements OnInit {
   deleteRowData(getId){
     this.deleteEventFromModel.emit(getId);
   }
-  onSubmit(updateForm) {
+  onSubmit(updateForm, id) {
+    this.submitted = true;
+    updateForm = {
+      'id': id,
+      'name': updateForm["getdata.name"],
+      'email': updateForm["getdata.email"],
+      'username': updateForm["getdata.username"],
+      'phone': updateForm["getdata.phone"],
+      'company': updateForm["getdata.company.name"],
+      'catchPhrase': updateForm["getdata.company.catchPhrase"],
+      'suite': updateForm["getdata.address.suite"],
+      'zipcode': updateForm["getdata.address.zipcode"],
+      'city': updateForm["getdata.address.city"],
+      'address': updateForm["getdata.address.street"],
+      'website': updateForm["getdata.website"],
+      'bs': updateForm["getdata.company.bs"]
+    }
     this.updateEventFromModal.emit(updateForm);
+    $("div[id^='updateModal']").modal('hide');
   }
   onSubmitCreateForm() {
     this.submitted = true;

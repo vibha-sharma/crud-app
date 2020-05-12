@@ -1,3 +1,4 @@
-<app-table [data]="profileData" [header]="headers" [pageHeader]="pageheading"
+<app-table [data]="profileData" [header]="headers" [pageHeader]="pageheading" 
   (deleteEvent)=deleteUserRow($event) (updateEvent)=updateData($event)></app-table>
-<!-- <app-user-detail></app-user-detail> -->
+<app-loader (messageSend)="getMessage($event)" [receivedSpinnerVal]="showSpinner"></app-loader>
+<app-notification></app-notification>

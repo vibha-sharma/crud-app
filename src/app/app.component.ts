@@ -9,9 +9,11 @@ import { ConfigService } from './config.service';
 export class AppComponent {
   title = 'crud-app';
   constructor(private configService: ConfigService) {}
+    ngOnInit(): void {
+    }
     showUserCreated(getUserData){
-		this.configService.postRequest('profiles', getUserData).subscribe((data:any[])=>{
-		 	console.log('getUserData2', getUserData);
-	 });
+		  this.configService.postRequest('profiles', getUserData).subscribe((data:any[])=>{
+
+	   });
 	}
 }

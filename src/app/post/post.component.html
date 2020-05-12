@@ -1,1 +1,3 @@
+<button type="button" (click)="checkCount()">Check Count</button>
 <app-table [data]="postData" [header]="headers" [pageHeader]="pageheading" (deleteEvent)=deleteRowData($event)></app-table>
+<app-loader [receivedSpinnerVal]="showSpinner"></app-loader>

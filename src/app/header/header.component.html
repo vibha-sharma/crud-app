@@ -15,12 +15,11 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/comment">Comments</a>
       </li>
+      <app-bell-notification></app-bell-notification>
     </ul>
   </div>
-  <form>
    <!--  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
     <button class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" 
     data-toggle="modal" data-target="#createAccountModal" type="button">Create Account</button>
     <app-modal [createAccountModal]="'createAccountModal'" (createEventFromModal)=createNewuser($event)></app-modal>
-  </form>
 </nav>

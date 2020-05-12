@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <h1>Please enter User ID:</h1>
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Please enter User ID" [(ngModel)]="userDetail" name="userDetail">
+    <input type="text" class="form-control" placeholder="Please enter User ID" [(ngModel)]=userDetail name="userDetail">
     <div class="input-group-prepend">
       <button class="btn btn-outline-info" type="button" (click)="getUserDetail(userDetail)">Get detail</button>  
     </div>

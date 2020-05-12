@@ -12,25 +12,30 @@ export class UserDetailComponent implements OnInit {
     userDetail: any;
     headers = ['Id', 'Name/Username', 'Email', 'Phone','Actions'];
     showUserdata: any = "";
-    href: any = ""
-    id: any = ""
-  //  @Output() sendIdEvent = new EventEmitter<any>();
+    href: any = "";
+    id: any = "";
     constructor(private configService: ConfigService, private router: Router,
     	private route: ActivatedRoute) { }
     
     ngOnInit(): void {
-    this.href = this.router.url;
-		this.id = this.route.snapshot.paramMap.get('id');
-		console.log('id', this.route);
-		console.log('this.router', this.router);
-		if(this.id){
-			this.getUserDetail(this.id);
-		}
+      this.href = this.router.url;
+  		this.id = this.route.snapshot.paramMap.get('id');
+  		console.log('id', this.route);
+  		console.log('this.router', this.router);
+  		if(this.id){
+  			this.getUserDetail(this.id);
+  		}
     }
 	getUserDetail(getUserId){
-		this.configService.getRequest('profiles/' + getUserId).subscribe((data:any[])=>{
-		    this.showUserdata = data;
-		});
+    var getUserIdVal = parseInt(getUserId);
+    if(getUserIdVal == NaN){
+      return;
+    }
+    else {
+      this.configService.getRequest('profiles/' + getUserIdVal).subscribe((data:any[])=>{
+        this.showUserdata = data;
+      });
+    }
 	}
 	getUserInfoData (dataId){
         console.log('dataId', dataId);

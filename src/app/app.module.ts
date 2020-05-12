@@ -13,13 +13,17 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { TableComponent } from './table/table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-
+import { LoaderComponent } from './loader/loader.component';
+import { NotificationComponent } from './notification/notification.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BellNotificationComponent } from './bell-notification/bell-notification.component';
+import { EventService } from './event.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,10 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     PageNotFoundComponent,
     TableComponent,
     ModalComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    LoaderComponent,
+    NotificationComponent,
+    BellNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +53,12 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [
-  ConfigService
+  ConfigService,
+  EventService
   ],
   bootstrap: [AppComponent]
 })

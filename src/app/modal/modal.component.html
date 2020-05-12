@@ -26,36 +26,46 @@
         </button>
       </div>
        <div class="modal-body">
-       	     <form #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm)" novalidate>
-       	 	    <div class="form-group">
+       	     <form class="form" #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm.value, getdata.id)">
+       	 	    <div class="form-group" *ngIf="getdata.name">
 			        <label for="name">Name:</label>
-			        <input  *ngIf="getdata.name" type="text" class="form-control" id="name" placeholder="Enter Name" name="getdata.name" [ngModel]="getdata.name" #name="ngModel"/>
+			        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="getdata.name" [ngModel]="getdata.name" #name="ngModel"/>
 			    </div>
-			    <div class="form-group">
+			    <div class="form-group" *ngIf="getdata.username" >
 			        <label for="username">User Name:</label>
-			        <input *ngIf="getdata.username" type="text" class="form-control" id="username" placeholder="Enter Username" name="getdata.usernam" [ngModel]="getdata.username" #username="ngModel"/>
+			        <input type="text" class="form-control" id="username" placeholder="Enter Username" name="getdata.username" [ngModel]="getdata.username" #username="ngModel"/>
 			    </div>
-			    <div class="form-group">
+			    <div class="form-group" *ngIf="getdata.email">
 			        <label for="email">Email:</label>
-			        <input *ngIf="getdata.email" type="email" class="form-control" id="email" placeholder="Enter Email" name="getdata.email" [ngModel]="getdata.email" #email="ngModel"/>
+			        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="getdata.email" [ngModel]="getdata.email" #email="ngModel"/>
 			    </div>
-			    <div class="form-group">
+			    <div class="form-group" *ngIf="getdata.phone">
 			        <label for="phone">Phone:</label>
-			        <input *ngIf="getdata.phone" type="phone" class="form-control" id="phone" placeholder="Enter Phone" name="getdata.phone" [ngModel]="getdata.phone" #phone="ngModel"/>
+			        <input type="phone" class="form-control" id="phone" placeholder="Enter Phone" name="getdata.phone" [ngModel]="getdata.phone" #phone="ngModel"/>
 			    </div>
-			    <div class="form-group">
+			    <div class="form-group" *ngIf="getdata.address">
 			        <label for="address">Address:</label>
 			        <input *ngIf="getdata.address && getdata.address.street" type="text" class="form-control" id="email" placeholder="Enter Street" name="getdata.address.street" [ngModel]="getdata.address.street"  #address="ngModel"/>
 			        <input *ngIf="getdata.address && getdata.address.suite" type="text" class="form-control" id="suite" placeholder="Enter Suite" name="getdata.address.suite" [ngModel]="getdata.address.suite" #suite="ngModel"/>
 			        <input *ngIf="getdata.address && getdata.address.city" type="text" class="form-control" id="city" placeholder="Enter City" name="getdata.address.city" [ngModel]="getdata.address.city" #city="ngModel"/>
 			        <input *ngIf="getdata.address && getdata.address.zipcode" type="text" class="form-control" id="zipcode" placeholder="Enter Zipcode" name="getdata.address.zipcode" [ngModel]="getdata.address.zipcode" #zipcode="ngModel"/>
 			    </div>
+			    <div class="form-group" *ngIf="getdata.website">
+			        <label for="url">Website:</label>
+			        <input name="getdata.website" id="website" type="text" class="form-control" placeholder="Website" [ngModel]="getdata.website" #website="ngModel"/>
+			    </div>
+			    <div class="form-group" *ngIf="getdata.company">
+			        <label for="company">Company:</label>
+			        <input *ngIf="getdata.company && getdata.company.name"  name="getdata.company.name" id="company" type="text" class="form-control" placeholder="Enter Company Name" [ngModel]="getdata.company.name" #company="ngModel"/>
+			        <input *ngIf="getdata.company && getdata.company.catchPhrase" name="getdata.company.catchPhrase" id="catchPhrase" type="text" class="form-control" placeholder="Enter Company CatchPhrase" [ngModel]="getdata.company.catchPhrase" #catchPhrase="ngModel"/>
+			        <input *ngIf="getdata.company && getdata.company.bs" name="getdata.company.bs" id="bs" type="text" class="form-control" placeholder="Enter Company Bs" [ngModel]="getdata.company.bs" #company="ngModel"/>
+			    </div>
 		        <button type="submit" class="btn btn-primary bg-info">Submit Form</button>
 		    </form>
        </div>
     </div>
   </div>
-</div>
+</div> 
 <!-- Craete Account -->
 <div class="modal fade" id="createAccountModal" tabindex="-1" role="dialog" aria-labelledby="createAccountModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

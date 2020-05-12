@@ -13,11 +13,18 @@ export class TableComponent implements OnInit {
   @Output() updateEvent = new EventEmitter<any>();
   @Output() deleteRowDataEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
+  config: any;
 //  @Output() userInfoEvent = new EventEmitter<any>();
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+        // this.config = {
+    //     itemsPerPage: 1,
+    //     currentPage: 1,
+    //     totalItems: getData.length
+    // };
+  }
   deleteRowData(data){
     this.deleteRowDataEvent.emit(data);
   }
@@ -25,6 +32,10 @@ export class TableComponent implements OnInit {
     this.deleteEvent.emit(getId);
   }
   updateRow(getData){
-    this.updateEvent.emit({getData});
+    console.log('getData',getData);
+    this.updateEvent.emit(getData);
+  }
+  pageChanged(event){
+      this.config.currentPage = event;
   }
 }

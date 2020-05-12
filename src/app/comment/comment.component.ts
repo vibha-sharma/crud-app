@@ -11,6 +11,7 @@ export class CommentComponent implements OnInit {
     commentData: any = "";
     headers = ['#', 'Name', 'Email', 'Content', 'Actions'];
     pageheading = "Comment Section!";
+    showSpinner: any = true;
     @Output() deleteEventFromModel = new EventEmitter<any>();
 	ngOnInit(): void {
 		this.getData();
@@ -22,6 +23,7 @@ export class CommentComponent implements OnInit {
 	getData(){
 		this.configService.getRequest('comments').subscribe((data:any[])=>{
 	  		this.commentData = data;
+	  		this.showSpinner = false;
 	  	});
 	}
 }
