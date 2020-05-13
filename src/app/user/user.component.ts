@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ConfigService } from '../config.service';
+import { EventService } from '../event.service';
 declare var $: any;
 @Component({
   selector: 'app-user',
@@ -8,13 +9,14 @@ declare var $: any;
 })
 export class UserComponent implements OnInit {
 	@Input() getUserInfo:any;
-    constructor(private configService: ConfigService) { }
+    constructor(private configService: ConfigService, private eventService: EventService) { }
     profileData: any = "";
     headers = ['Id', 'Name/Username', 'Email', 'Phone','Actions'];
     pageheading = "User Section!";
     showSpinner: any = true;
     SendGetData = this.getData();
     config: any;
+    getCount: any;
 	ngOnInit(): void {
 		this.getData();
 		console.log('ss', this.SendGetData);
@@ -41,5 +43,9 @@ export class UserComponent implements OnInit {
 	}
 	getMessage(message){
 	    console.log('message', message);
+	}
+	checkCount(){
+		this.getCount = this.eventService.sendToClickEvent()
+		this.eventService.IncreaseCount(this.getCount);
 	}
 }

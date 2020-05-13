@@ -1,3 +1,4 @@
+<button type="button" (click)="checkCount()">Check Count</button>
 <app-table [data]="profileData" [header]="headers" [pageHeader]="pageheading" 
   (deleteEvent)=deleteUserRow($event) (updateEvent)=updateData($event)></app-table>
 <app-loader (messageSend)="getMessage($event)" [receivedSpinnerVal]="showSpinner"></app-loader>
