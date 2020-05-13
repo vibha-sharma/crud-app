@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
+import { Subscription }   from 'rxjs';
 
 @Component({
   selector: 'app-bell-notification',
@@ -8,14 +9,18 @@ import { EventService } from '../event.service';
 })
 export class BellNotificationComponent implements OnInit {
   event:any;
- // count : number = 10;
-  public count: number = 50;
-  constructor(private eventService:EventService) { }
+  countGet: any = 10;
+  public count: number = 10;
+  subscription: Subscription;
+  constructor(private eventService:EventService) {
+    this.subscription = this.eventService.count$.subscribe(val=>{
+        console.log('val', val);
+        this.countGet = val;
+      })
+   }
 
   ngOnInit(): void {
-  	
-  	//this.count = this.eventService.IncreaseCount();
-  	console.log('bell-notification', this.count);
-  	this.eventService.IncreaseCount(this.count);
+  	this.eventService.SendCount(this.count);
   }
 }
+

@@ -14,12 +14,10 @@ export class PostComponent implements OnInit {
     pageheading = "Post Section!";
     showSpinner: any = true;
     getCount: any;
-    //public count: number = 10;
     @Output() deleteEventFromModel = new EventEmitter<any>();
     @Output() checkCountEvent = new EventEmitter<any>();
 	ngOnInit(): void {
 		this.getData();
-		console.log('PostComponent',this.eventService.IncreaseCount2());
 	}
     // Delete Row 
 	deleteRowData(getId){
@@ -32,7 +30,7 @@ export class PostComponent implements OnInit {
 	  	});
 	}
 	checkCount(){
-		this.getCount = this.eventService.IncreaseCount2();
-		console.log('this.getCount', this.getCount);
+		this.getCount = this.eventService.sendToClickEvent()
+		this.eventService.IncreaseCount(this.getCount);
 	}
 }
