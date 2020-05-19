@@ -24,6 +24,10 @@ import { NotificationComponent } from './notification/notification.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BellNotificationComponent } from './bell-notification/bell-notification.component';
 import { EventService } from './event.service';
+import { AuthGuardService } from './auth-guard.service';
+import { LoginComponent } from './login/login.component';
+import { loginService } from './login/login-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +41,8 @@ import { EventService } from './event.service';
     UserDetailComponent,
     LoaderComponent,
     NotificationComponent,
-    BellNotificationComponent
+    BellNotificationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,9 @@ import { EventService } from './event.service';
   ],
   providers: [
   ConfigService,
-  EventService
+  EventService,
+  AuthGuardService,
+  loginService
   ],
   bootstrap: [AppComponent]
 })
