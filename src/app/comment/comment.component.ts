@@ -12,6 +12,7 @@ export class CommentComponent implements OnInit {
     headers = ['#', 'Name', 'Email', 'Content', 'Actions'];
     pageheading = "Comment Section!";
     showSpinner: any = true;
+    newArray: any = "";
     @Output() deleteEventFromModel = new EventEmitter<any>();
 	ngOnInit(): void {
 		this.getData();
@@ -22,6 +23,16 @@ export class CommentComponent implements OnInit {
 	}
 	getData(){
 		this.configService.getRequest('comments').subscribe((data:any[])=>{
+			data.forEach(function(value, dataIndex){
+              	var split = value.body.split(' ');
+              	split.forEach(function(val, index){
+					if(val.includes('gmail') || val.includes('yahoo') || val.includes('google')){
+					   	val = '<a href="'+val+'">' + val +'</a>';
+					   	split[index] = val;
+					   	data[dataIndex].body = split.join(' ');
+					}
+				});
+			})
 	  		this.commentData = data;
 	  		this.showSpinner = false;
 	  	});

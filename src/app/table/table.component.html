@@ -13,7 +13,7 @@
         <td *ngIf="data.email"> {{ data.email }}</td>
         <td *ngIf="data.phone"> {{ data.phone }}</td>
         <td *ngIf="data.title"> {{ data.title }}</td>
-        <td *ngIf="data.body"> {{ data.body }}</td>
+        <td *ngIf="data.body"> <div [innerHtml]="data.body"></div> </td>
         <td>
         	<span *ngIf="pageHeader === 'User Section!'" data-toggle="modal" [attr.data-target]="'#updateModal' + data.id" type="button"><i class="fa fa-edit"></i></span>
         	<span *ngIf="pageHeader != 'User Section!'" data-toggle="modal" type="button"><i class="fa fa-pencil-square"></i></span>
