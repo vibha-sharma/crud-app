@@ -12,7 +12,7 @@ export class AuthGuardService implements CanActivate{
     return this.checkLogin(url);
   }
    checkLogin(url: string): boolean {
-    if (this.loginService.isLoggedIn) { 
+    if (this.loginService.isLoggedIn && localStorage.getItem('userDetail')) {
       return true; 
     }
     this.loginService.redirectUrl = url;

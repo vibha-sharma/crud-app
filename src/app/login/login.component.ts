@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       email:  ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
+    this.loginService.checkLoginData();
   }
   get validation(){
     return this.loginfrom.controls;

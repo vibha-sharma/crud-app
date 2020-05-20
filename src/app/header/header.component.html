@@ -4,7 +4,7 @@
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
+  <div class="collapse navbar-collapse" id="navbarCollapse" *ngIf="checkLoggedin">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/user">Users</a>
@@ -19,7 +19,8 @@
     </ul>
   </div>
    <!--  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-    <button class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" 
-    data-toggle="modal" data-target="#createAccountModal" type="button">Create Account</button>
+   <button class="btn btn-outline-info my-2 my-sm-0 btn-create" type="button" *ngIf="checkLoggedin" (click)="signOut()">Sign Out</button>
+    <button class="btn btn-outline-info my-2 my-sm-0 btn-create" data-toggle="modal" 
+    data-toggle="modal" data-target="#createAccountModal" type="button"  *ngIf="!checkLoggedin">Create Account</button>
     <app-modal [createAccountModal]="'createAccountModal'" (createEventFromModal)=createNewuser($event)></app-modal>
 </nav>
